@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-import { LoginOutlined, UserAddOutlined } from "@ant-design/icons";
+import {
+  LoginOutlined,
+  UserAddOutlined,
+  AppstoreOutlined,
+} from "@ant-design/icons";
 import { Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +19,11 @@ const Header = (props) => {
       label: "Register",
       key: "register",
       icon: <UserAddOutlined />,
+    },
+    {
+      label: "Products",
+      key: "products",
+      icon: <AppstoreOutlined />,
     },
   ];
   const navigate = useNavigate();
