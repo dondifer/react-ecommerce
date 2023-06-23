@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-let dataArray = [];
+// import { useState } from "react";
 
 const Register = () => {
   let navigate = useNavigate();
-  const [data, setData] = useState({});
-  const [btnDisabled, setBtnDisabled] = useState(true);
+  // const [data, setData] = useState({});
+  // const [btnDisabled, setBtnDisabled] = useState(true);
 
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
 
   // const handleInputChange = (event) => {
   //   console.log(event.target.name);
