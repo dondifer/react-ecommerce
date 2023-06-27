@@ -1,10 +1,13 @@
 import { Button, Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { UserContext } from "../../context/UserState";
 
 const Login = () => {
+  let navigate = useNavigate();
+
   const { data, registerNewUser, token, login } = useContext(UserContext);
 
   const onFinish = (values) => {
@@ -14,6 +17,7 @@ const Login = () => {
     };
     login(user);
     console.log("Success:", values);
+    navigate("/products");
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

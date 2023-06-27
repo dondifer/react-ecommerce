@@ -3,6 +3,9 @@ import {
   LoginOutlined,
   UserAddOutlined,
   AppstoreOutlined,
+  ProfileOutlined,
+  ShoppingCartOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import React, { useEffect, useState, useContext } from "react";
@@ -10,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserState";
 
 const Header = (props) => {
-  const { data, registerNewUser, token } = useContext(UserContext);
+  const { data, registerNewUser, token, login, logout } =
+    useContext(UserContext);
   const items = !token
     ? [
         {
@@ -35,13 +39,35 @@ const Header = (props) => {
           key: "products",
           icon: <AppstoreOutlined />,
         },
+        {
+          label: "Profile",
+          key: "profile",
+          icon: <ProfileOutlined />,
+        },
+        {
+          label: "Cart",
+          key: "cart",
+          icon: <ShoppingCartOutlined />,
+        },
+        {
+          label: "Logout",
+          key: "logout",
+          icon: <LogoutOutlined />,
+        },
       ];
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("");
   const onClick = (e) => {
     console.log("click ", e);
-    navigate(`/${e.key}`);
+    if (e.key !== "logout") {
+      navigate(`/${e.key}`);
+    } else {
+      logout();
+      setCurrent("");
+      navigate(`/`);
+    }
+
     setCurrent(e.key);
   };
 
