@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
   const registerNewUser = async (user) => {
-    const response = await axios.post(`${API_URL}/users/newUser`, user);
+    const response = await axios.post(`${API_URL}/users/register`, user);
 
     dispatch({
       type: "POST_NEW_USER",
@@ -40,6 +40,7 @@ export const UserProvider = ({ children }) => {
       value={{
         data: state.data,
         registerNewUser,
+        token: state.token,
         login,
       }}
     >

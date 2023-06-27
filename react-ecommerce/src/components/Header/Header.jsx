@@ -5,27 +5,37 @@ import {
   AppstoreOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserState";
 
 const Header = (props) => {
-  const items = [
-    {
-      label: "Login",
-      key: "",
-      icon: <LoginOutlined />,
-    },
-    {
-      label: "Register",
-      key: "register",
-      icon: <UserAddOutlined />,
-    },
-    {
-      label: "Products",
-      key: "products",
-      icon: <AppstoreOutlined />,
-    },
-  ];
+  const { data, registerNewUser, token } = useContext(UserContext);
+  const items = !token
+    ? [
+        {
+          label: "Login",
+          key: "",
+          icon: <LoginOutlined />,
+        },
+        {
+          label: "Register",
+          key: "register",
+          icon: <UserAddOutlined />,
+        },
+        {
+          label: "Products",
+          key: "products",
+          icon: <AppstoreOutlined />,
+        },
+      ]
+    : [
+        {
+          label: "Products",
+          key: "products",
+          icon: <AppstoreOutlined />,
+        },
+      ];
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [current, setCurrent] = useState("mail");

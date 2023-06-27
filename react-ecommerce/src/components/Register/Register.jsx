@@ -1,24 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import {
-  AutoComplete,
-  Button,
-  Cascader,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-} from "antd";
+import { useContext, useEffect } from "react";
+
+import { UserContext } from "../../context/UserState";
+import { Button, Form, Input, Select } from "antd";
 const { Option } = Select;
 
 // import { useState } from "react";
 
 const Register = () => {
   let navigate = useNavigate();
+  const { data, registerNewUser } = useContext(UserContext);
 
   const onFinish = (values) => {
+    const user = {
+      name: values.nickname,
+      email: values.email,
+      password: values.password,
+      age: values.age,
+    };
+    registerNewUser(user);
     navigate("/");
     console.log("Success:", values);
   };
@@ -116,6 +116,20 @@ const Register = () => {
               {
                 required: true,
                 message: "Please input your nickname!",
+                whitespace: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="age"
+            label="Age"
+            tooltip="What is your age?"
+            rules={[
+              {
+                required: true,
+                message: "Please input your age!",
                 whitespace: true,
               },
             ]}
