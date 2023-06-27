@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import { UserContext } from "../../context/UserState";
 
-const Home = () => {
+const Login = () => {
   const { data, registerNewUser, token, login } = useContext(UserContext);
 
   const onFinish = (values) => {
@@ -63,4 +63,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Login;
