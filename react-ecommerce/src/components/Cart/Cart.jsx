@@ -1,16 +1,31 @@
-import { Button, Form, Input } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useContext } from "react";
-
-import { UserContext } from "../../context/UserState";
+import { ProductsContext } from "../../context/ProductState";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Card } from "antd";
+const { Meta } = Card;
 
 const Cart = () => {
-  const { data, registerNewUser, token, login } = useContext(UserContext);
+  const { cart } = useContext(ProductsContext);
+
+  if (cart.length <= 0) {
+    return <span>No tienes ningún producto añadido</span>;
+  }
+
+  const cartList = cart.map((item) => {
+    return (
+      <div key={item._id}>
+        <Card style={{ width: 300 }}>
+          <Meta title={item.name} description={`${item.price.toFixed(2)}$`} />
+        </Card>
+      </div>
+    );
+  });
 
   return (
     <div>
       <div>
-        <h2>Cart</h2>
+        <h2>Products</h2>
+        <div className="cardList">{cartList}</div>
       </div>
     </div>
   );

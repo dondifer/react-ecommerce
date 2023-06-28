@@ -5,6 +5,7 @@ import { API_URL } from "../../config/key";
 
 const initialState = {
   products: [],
+  cart: [],
 };
 
 export const ProductsContext = createContext(initialState);
@@ -23,11 +24,21 @@ export const ProductsProvider = ({ children }) => {
 
     return res;
   };
+
+  const addCart = (product) => {
+    console.log("addedtocart", product);
+    dispatch({
+      type: "ADD_CART",
+      payload: product,
+    });
+  };
   return (
     <ProductsContext.Provider
       value={{
         products: state.products,
         getProducts,
+        addCart,
+        cart: state.cart,
       }}
     >
       {children}

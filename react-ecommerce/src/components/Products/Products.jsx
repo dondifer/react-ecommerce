@@ -1,23 +1,19 @@
 import { useContext, useEffect } from "react";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-  ShoppingCartOutlined,
-} from "@ant-design/icons";
-import { Avatar, Card } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Card } from "antd";
 const { Meta } = Card;
 import { ProductsContext } from "../../context/ProductState";
 
 const Products = () => {
-  const { products, getProducts } = useContext(ProductsContext);
+  const { products, getProducts, addCart } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts();
     console.log("productostos", products);
   }, []);
 
-  const addToChart = (item) => {
+  const addToCart = (item) => {
+    addCart(item);
     console.log("new in chart", item);
   };
   const productList = products.map((item) => {
@@ -26,7 +22,7 @@ const Products = () => {
         <Card
           style={{ width: 300 }}
           actions={[
-            <ShoppingCartOutlined key="buy" onClick={() => addToChart(item)} />,
+            <ShoppingCartOutlined key="buy" onClick={() => addToCart(item)} />,
           ]}
         >
           <Meta title={item.name} description={`${item.price.toFixed(2)}$`} />
