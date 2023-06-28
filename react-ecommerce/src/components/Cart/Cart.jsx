@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductState";
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 const { Meta } = Card;
 
