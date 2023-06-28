@@ -23,7 +23,7 @@ const Cart = () => {
   return (
     <div>
       <div>
-        <h2>Products</h2>
+        <h2>Cart</h2>
         <div className="cardList">{cartList}</div>
       </div>
     </div>
