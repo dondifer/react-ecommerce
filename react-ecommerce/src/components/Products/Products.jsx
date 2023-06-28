@@ -16,12 +16,18 @@ const Products = () => {
     getProducts();
     console.log("productostos", products);
   }, []);
+
+  const addToChart = (item) => {
+    console.log("new in chart", item);
+  };
   const productList = products.map((item) => {
     return (
       <div key={item._id}>
         <Card
           style={{ width: 300 }}
-          actions={[<ShoppingCartOutlined key="buy" />]}
+          actions={[
+            <ShoppingCartOutlined key="buy" onClick={() => addToChart(item)} />,
+          ]}
         >
           <Meta title={item.name} description={`${item.price.toFixed(2)}$`} />
         </Card>
