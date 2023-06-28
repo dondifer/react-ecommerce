@@ -1,11 +1,14 @@
-import { Button, Form, Input } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
-import { UserContext } from "../../context/UserState";
+import { ProductsContext } from "../../context/ProductState";
 
 const Products = () => {
-  const { data, registerNewUser, token, login } = useContext(UserContext);
+  const { products, getProducts } = useContext(ProductsContext);
+
+  useEffect(() => {
+    getProducts();
+    console.log("productostos", products);
+  }, []);
 
   return (
     <div>

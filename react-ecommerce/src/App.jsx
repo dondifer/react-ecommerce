@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./context/UserState";
+import { ProductsProvider } from "./context/ProductState";
 import Login from "./components/Login/Login";
 import Header from "./components/Header/Header.jsx";
 import Register from "./components/Register/Register.jsx";
@@ -21,17 +22,19 @@ function App() {
         }}
       >
         <UserProvider>
-          <BrowserRouter>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-            <Footer />
-          </BrowserRouter>
+          <ProductsProvider>
+            <BrowserRouter>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+              <Footer />
+            </BrowserRouter>
+          </ProductsProvider>
         </UserProvider>
       </ConfigProvider>
     </>
