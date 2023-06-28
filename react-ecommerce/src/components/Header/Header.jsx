@@ -58,6 +58,7 @@ const Header = (props) => {
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [current, setCurrent] = useState("");
+
   const onClick = (e) => {
     console.log("click ", e);
     if (e.key !== "logout") {
@@ -75,6 +76,12 @@ const Header = (props) => {
     navigate("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      setCurrent("products");
+    }
+  }, [token]);
   return (
     // <div>
     //   <nav>
