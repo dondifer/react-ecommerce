@@ -5,12 +5,16 @@ const { Meta } = Card;
 import { ProductsContext } from "../../context/ProductState";
 
 const Products = () => {
-  const { products, getProducts, addCart } = useContext(ProductsContext);
+  const { products, getProducts, addCart, cart } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts();
     console.log("productostos", products);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (item) => {
     addCart(item);

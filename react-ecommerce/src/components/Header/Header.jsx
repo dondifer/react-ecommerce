@@ -83,17 +83,6 @@ const Header = (props) => {
     }
   }, [token]);
   return (
-    // <div>
-    //   <nav>
-    //     <ul className="bullet-less">
-    //       {props.links.map((link, index) => (
-    //         <li key={index}>
-    //           <Link to={link.url}>{link.name}</Link>
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   </nav>
-    // </div>
     <Menu
       className="menu"
       onClick={onClick}

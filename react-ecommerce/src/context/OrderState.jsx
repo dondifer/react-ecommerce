@@ -10,18 +10,29 @@ const initialState = {
 export const OrdersContext = createContext(initialState);
 
 // eslint-disable-next-line react/prop-types
-export const ProductsProvider = ({ children }) => {
+export const OrderProvider = ({ children }) => {
   const [state, dispatch] = useReducer(OrderReducer, initialState);
+  const token = JSON.parse(localStorage.getItem("token"));
+  const makeOrder = async (order) => {
+    try {
+      const res = await axios.post(
+        API_URL + "/orders",
+        { productIds: order },
 
-  const makeOrder = async () => {
-    const res = await axios.get(API_URL + "/orders");
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
 
-    dispatch({
-      type: "MAKE_ORDERS",
-      payload: res.data,
-    });
-
-    return res;
+      dispatch({
+        type: "MAKE_ORDERS",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <OrdersContext.Provider

@@ -3,9 +3,11 @@ import ProductReducer from "./ProductReducer";
 import axios from "axios";
 import { API_URL } from "../../config/key";
 
+const cart = JSON.parse(localStorage.getItem("cart"));
+
 const initialState = {
   products: [],
-  cart: [],
+  cart: cart ? cart : [],
 };
 
 export const ProductsContext = createContext(initialState);
@@ -27,11 +29,19 @@ export const ProductsProvider = ({ children }) => {
 
   const addCart = (product) => {
     console.log("addedtocart", product);
+
     dispatch({
       type: "ADD_CART",
       payload: product,
     });
   };
+
+  const clearCart = () => {
+    dispatch({
+      type: "CLEAR_CART",
+    });
+  };
+
   return (
     <ProductsContext.Provider
       value={{
@@ -39,6 +49,7 @@ export const ProductsProvider = ({ children }) => {
         getProducts,
         addCart,
         cart: state.cart,
+        clearCart,
       }}
     >
       {children}
