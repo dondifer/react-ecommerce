@@ -8,7 +8,7 @@ const user = (state, action) => {
     case "LOGIN":
       return {
         ...state,
-        data: action.payload.user,
+        data: action.payload,
         token: action.payload.token,
       };
     case "LOGOUT":
@@ -16,6 +16,11 @@ const user = (state, action) => {
         ...state,
         data: null,
         token: "",
+      };
+    case "GET_INFO":
+      return {
+        ...state,
+        data: action.payload,
       };
     default:
       return state;

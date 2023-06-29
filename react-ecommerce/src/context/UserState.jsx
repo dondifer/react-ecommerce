@@ -52,6 +52,18 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const getInfo = async () => {
+    const res = await axios.get(API_URL + "/users/info", {
+      headers: {
+        authorization: state.token,
+      },
+    });
+    dispatch({
+      type: "GET_INFO",
+      payload: res.data,
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -60,6 +72,7 @@ export const UserProvider = ({ children }) => {
         token: state.token,
         login,
         logout,
+        getInfo,
       }}
     >
       {children}
