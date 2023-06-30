@@ -7,7 +7,6 @@ In this project we wil use React and React context to build a simple news SPA we
 ## How to start
 First of all we have to clone the repo in our local
 
-
 ```bash
 git clone https://github.com/dondifer/react-ecommerce.git
  ```
