@@ -14,6 +14,11 @@ span {
 .profile-info {
   display: flex;
   flex-direction: column;
+  text-align: initial;
+
+  span {
+    font-weight: 700;
+  }
 }
 
 .order-list {
@@ -22,6 +27,13 @@ span {
   flex-wrap: wrap;
   height: 350px;
   overflow: auto;
+}
+
+.img-base {
+  width: 240px;
+  height: 240px;
+  border-radius: 40rem;
+  margin: 1rem auto;
 }
 
 .padding {

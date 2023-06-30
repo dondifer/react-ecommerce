@@ -35,17 +35,23 @@ const Profile = () => {
     "No orders found";
 
   return (
-    <div>
-      <div className="profile-info">
-        <h2>Profile info</h2>
-        <span>{console.log(data)}</span>
-        <span>Email: {data.email}</span>
-        <span>Nickname: {data.name}</span>
-        <span>Nickname: {data.role}</span>
+    (data && (
+      <div>
+        <div className="profile-info">
+          <h2>Profile info</h2>
+          <img
+            className="img-base"
+            alt="avatar"
+            src="https://cdn.pixabay.com/photo/2015/10/31/12/41/controlled-1015719_1280.jpg"
+          />
+          <span>Email: {data.email}</span>
+          <span>Nickname: {data.name}</span>
+          <span>Role: {data.role}</span>
+        </div>
+        <h3>Orders:</h3>
+        <div className="order-list">{orders}</div>
       </div>
-      <h3>Orders:</h3>
-      <div className="orderList">{orders}</div>
-    </div>
+    )) || <div>loading...</div>
   );
 };
 
