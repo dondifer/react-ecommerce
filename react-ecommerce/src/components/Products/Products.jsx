@@ -38,7 +38,7 @@ const Products = () => {
     <div>
       <div>
         <h2>Products</h2>
-        <div className="cardList">{productList}</div>
+        <div className="cardList">{productList || "loading..."}</div>
       </div>
     </div>
   );

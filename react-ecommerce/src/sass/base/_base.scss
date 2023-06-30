@@ -5,8 +5,27 @@
   text-align: center;
 }
 
-h2 {
+h2,
+h3,
+span {
   color: #3b3b3b;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  height: 350px;
+  overflow: auto;
+}
+
+.padding {
+  padding: 1rem;
 }
 
 .logo {
