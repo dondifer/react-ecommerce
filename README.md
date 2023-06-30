@@ -1,7 +1,7 @@
 
 # React ecommerce
 
-In this project we wil use React and React context to build a simple news SPA web page linked with an api created by moingoDB in our local.
+In this project we wil use React and React context to build a simple news SPA web page linked with an api created by mongoDB in our local.
 
 
 ## How to start
