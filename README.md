@@ -9,7 +9,7 @@ First of all we have to clone the repo in our local
 
 
 ```bash
-git clone https://github.com/dondifer/react-news.git
+git clone https://github.com/dondifer/react-ecommerce.git
  ```
 
 
